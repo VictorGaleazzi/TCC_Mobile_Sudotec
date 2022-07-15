@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useRef, useImperativeHandle } from 'react';
 import { Text } from 'react-native';
 import {
   Container,
@@ -11,44 +11,74 @@ import {
   ButtonText,
   InputText,
 } from '../../styles/RegisterStyle';
-
 import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
+import { DropDown } from './Select';
 
 import Background from '../../utils/background.png';
 
 export default function RegisterPage() {
-  const [text, onChangeText] = React.useState('');
-  const [password, onChangePassword] = React.useState('');
+  const InputsRef = useRef({
+    name: '',
+    lastname: '',
+    Rua: '',
+    Bairro: '',
+    Numero: 0,
+    LocalAtendimento: '',
+    Descricao: '',
+  });
+
+  type FieldKeys = keyof typeof InputsRef.current;
+
+  const handleOnChangeTextInput = (v: string, field: FieldKeys) => {
+    InputsRef.current = {
+      ...InputsRef.current,
+      [field]: v,
+    }
+  }
+
+  function MostraInfo () {
+    console.log('Atendimento Enviado:' + '\n'
+    + 'Nome: ' + InputsRef.current.name + '\n' +
+    'Sobrenome: ' + InputsRef.current.lastname + '\n' +
+    'Local de Atendimento: ' + InputsRef.current.LocalAtendimento + '\n' +
+    'Rua: ' + InputsRef.current.Rua + '\n' +
+    'Bairro: ' + InputsRef.current.Bairro + '\n' +
+    'Número: ' + InputsRef.current.Numero + '\n' +
+    'Descrição: ' + InputsRef.current.Descricao + '\n'
+    );
+  }
+
+
+  // const [text, onChangeText] = React.useState('');
+  // const [password, onChangePassword] = React.useState('');
 
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const handleOnPress = () => {};
 
   return (
     <Container>
       <BackgroundImage source={Background}>
         <Header>Atendimemto</Header>
         <InputText>Motivo do atendimento:</InputText>
-        <Input onChangeText={onChangeText} value={text} />
-        <InputText>Nome:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
+        <DropDown></DropDown>
+        <Input onChangeText={(v) => handleOnChangeTextInput(v, 'name')} placeholder="Nome:" defaultValue='' placeholderTextColor="rgb(220, 220, 220)" />
         <InputText>Sobrenome:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
+        <Input onChangeText={(v) => handleOnChangeTextInput(v, 'lastname')} placeholder="Sobrenome:" defaultValue='' placeholderTextColor="rgb(220, 220, 220)" />
         <InputText>Rua:</InputText>
-        <Input onChangeText={onChangeText} value={text} />
+        <Input onChangeText={(v) => handleOnChangeTextInput(v, 'Rua')} placeholder="Rua:" defaultValue='' placeholderTextColor="rgb(220, 220, 220)" />
         <InputText>Bairro:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
+        <Input onChangeText={(v) => handleOnChangeTextInput(v, 'Bairro')} placeholder="Bairro:" defaultValue='' placeholderTextColor="rgb(220, 220, 220)"/>
         <InputText>Número:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
+        <Input onChangeText={(v) => handleOnChangeTextInput(v, 'Numero')} placeholder="Número:" defaultValue='' placeholderTextColor="rgb(220, 220, 220)" />
         <InputText>Local do atendimento:</InputText>
-        <Input onChangeText={onChangeText} value={text} />
+        <Input onChangeText={(v) => handleOnChangeTextInput(v, 'LocalAtendimento')} placeholder="Local Atendimento:" defaultValue='' placeholderTextColor="rgb(220, 220, 220)" />
         <InputText>Descrição:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
+        <Input onChangeText={(v) => handleOnChangeTextInput(v, 'Descricao')} placeholder="Descrição:" defaultValue='' placeholderTextColor="rgb(220, 220, 220)" />
 
         <ContainerButton>
-          <TheButton onPress={handleOnPress}>
+          <TheButton onPress={MostraInfo}>
             <ButtonText>Enviar atendimento</ButtonText>
           </TheButton>
 

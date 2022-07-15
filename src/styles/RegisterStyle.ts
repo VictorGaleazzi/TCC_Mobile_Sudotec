@@ -5,10 +5,10 @@ interface BackgroundProps {
   children: React.ReactNode;
 }
 
-interface InputProps {
-  onChangeText: React.Dispatch<React.SetStateAction<string>>;
-  value: string;
-}
+// interface InputProps {
+//   onChangeText: React.Dispatch<React.SetStateAction<string>>;
+//   value: string;
+// }
 
 export const BackgroundImage = styled.ImageBackground<BackgroundProps>`
   flex: 1;
@@ -70,7 +70,7 @@ export const TheButton = styled.TouchableOpacity`
   margin: 2px;
 `;
 
-export const Input = styled.TextInput<InputProps>`
+export const Input = styled.TextInput`
   border-color: black;
 
   width: 250px;
