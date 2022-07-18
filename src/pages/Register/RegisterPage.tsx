@@ -1,6 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
+
+import { RootStackParamList } from 'routes/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/core';
 import {
   Container,
   ContainerButton,
@@ -11,10 +15,6 @@ import {
   ButtonText,
   InputText,
 } from '../../styles/RegisterStyle';
-
-import { RootStackParamList } from 'routes/types';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/core';
 
 import Background from '../../utils/background.png';
 
@@ -45,9 +45,9 @@ export default function RegisterPage() {
           <InputText>Local do atendimento:</InputText>
           <Input onChangeText={onChangeText} value={text} />
           <InputText>Motivo do atendimento:</InputText>
-          <Input multiline={true} onChangeText={onChangeText} value={text} />
+          <Input multiline onChangeText={onChangeText} value={text} />
           <InputText>Descrição:</InputText>
-          <Input multiline={true} onChangeText={onChangePassword} value={password} />
+          <Input multiline onChangeText={onChangePassword} value={password} />
 
           <ContainerButton>
             <TheButton onPress={handleOnPress}>
@@ -58,8 +58,6 @@ export default function RegisterPage() {
               <ButtonText>Voltar à página inicial</ButtonText>
             </TheButton>
           </ContainerButton>
-
-          <StatusBar style="auto" />
         </ScrollView>
       </BackgroundImage>
     </Container>
