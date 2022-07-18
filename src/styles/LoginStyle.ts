@@ -12,12 +12,11 @@ interface InputProps {
 }
 
 export const Container = styled.View`
-  flex: 1;
   background-color: #4180ab;
   align-items: center;
   justify-content: center;
   width: 330px;
-  height: 50%;
+  height: 450px;
   border-radius: 50px;
 `;
 
