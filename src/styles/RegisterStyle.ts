@@ -40,14 +40,14 @@ export const AdressContainer = styled.View`
 
 export const ContainerButton = styled.View`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 280px;
 `;
 
 export const Header = styled.Text`
-  font-size: 60px;
+  font-size: 40px;
   color: #01243c;
 `;
 

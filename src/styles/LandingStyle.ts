@@ -36,15 +36,11 @@ export const Header = styled.Text`
   font-size: 60px;
 `;
 
-export const ButtonText = styled.Text`
-  color: #fff9f9;
-`;
-
 export const TheButton = styled.TouchableOpacity`
   width: 180px;
   height: 40px;
   border-radius: 10px;
-  background-color: #01243c;
+  background-color: #1ea5fc;
   display: flex;
   justify-content: center;
   align-items: center;

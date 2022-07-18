@@ -16,8 +16,8 @@ export const Container = styled.View`
   background-color: #4180ab;
   align-items: center;
   justify-content: center;
-  width: 636px;
-  height: 624px;
+  width: 330px;
+  height: 50%;
   border-radius: 50px;
 `;
 

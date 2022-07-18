@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import {
   Container,
   ContainerButton,
@@ -29,35 +29,38 @@ export default function RegisterPage() {
   return (
     <Container>
       <BackgroundImage source={Background}>
-        <Header>Atendimemto</Header>
-        <InputText>Motivo do atendimento:</InputText>
-        <Input onChangeText={onChangeText} value={text} />
-        <InputText>Nome:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
-        <InputText>Sobrenome:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
-        <InputText>Rua:</InputText>
-        <Input onChangeText={onChangeText} value={text} />
-        <InputText>Bairro:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
-        <InputText>Número:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
-        <InputText>Local do atendimento:</InputText>
-        <Input onChangeText={onChangeText} value={text} />
-        <InputText>Descrição:</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
+        <ScrollView>
+          <Header>Atendimento</Header>
 
-        <ContainerButton>
-          <TheButton onPress={handleOnPress}>
-            <ButtonText>Enviar atendimento</ButtonText>
-          </TheButton>
+          <InputText>Nome:</InputText>
+          <Input onChangeText={onChangePassword} value={password} />
+          <InputText>Sobrenome:</InputText>
+          <Input onChangeText={onChangePassword} value={password} />
+          <InputText>Rua:</InputText>
+          <Input onChangeText={onChangeText} value={text} />
+          <InputText>Bairro:</InputText>
+          <Input onChangeText={onChangePassword} value={password} />
+          <InputText>Número:</InputText>
+          <Input keyboardType="phone-pad" onChangeText={onChangePassword} value={password} />
+          <InputText>Local do atendimento:</InputText>
+          <Input onChangeText={onChangeText} value={text} />
+          <InputText>Motivo do atendimento:</InputText>
+          <Input multiline={true} onChangeText={onChangeText} value={text} />
+          <InputText>Descrição:</InputText>
+          <Input multiline={true} onChangeText={onChangePassword} value={password} />
 
-          <TheButton onPress={() => navigation.navigate('Main')}>
-            <ButtonText>Voltar à página inicial</ButtonText>
-          </TheButton>
-        </ContainerButton>
+          <ContainerButton>
+            <TheButton onPress={handleOnPress}>
+              <ButtonText>Enviar atendimento</ButtonText>
+            </TheButton>
 
-        <StatusBar style="auto" />
+            <TheButton onPress={() => navigation.navigate('Home')}>
+              <ButtonText>Voltar à página inicial</ButtonText>
+            </TheButton>
+          </ContainerButton>
+
+          <StatusBar style="auto" />
+        </ScrollView>
       </BackgroundImage>
     </Container>
   );
