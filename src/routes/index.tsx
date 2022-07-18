@@ -6,7 +6,7 @@ const Drawer = createDrawerNavigator();
 
 export const screenOptions = {
   headerStyle: {
-    backgroundColor: '#06b6d4',
+    backgroundColor: '#4180ab',
   },
   headerTintColor: '#fff',
 };
@@ -14,7 +14,7 @@ export const screenOptions = {
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+      <Drawer.Navigator initialRouteName="Login" screenOptions={screenOptions}>
         {AppRoutes({ Drawer })}
       </Drawer.Navigator>
     </NavigationContainer>

@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-
 import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
@@ -11,8 +9,6 @@ import Background from '../../utils/background.png';
 export default function MainPage() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const handleOnPress = () => {};
-
   return (
     <Container>
       <BackgroundImage source={Background}>
@@ -21,14 +17,12 @@ export default function MainPage() {
             <ButtonText>Gerar Atendimento</ButtonText>
           </TheButton>
           <TheButton onPress={() => navigation.navigate('Home')}>
-            <ButtonText>Avliações</ButtonText>
+            <ButtonText>Avaliações</ButtonText>
           </TheButton>
           <TheButton onPress={() => navigation.navigate('Home')}>
             <ButtonText>Relatório</ButtonText>
           </TheButton>
         </ContainerButton>
-
-        <StatusBar style="auto" />
       </BackgroundImage>
     </Container>
   );

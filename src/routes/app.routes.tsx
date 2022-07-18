@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Home, Login, Atendimento } from '../pages/';
+import { Home, Login, Atendimento } from '../pages';
 
 import { PropsGroup } from './types';
 
