@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
-
+import React, { useState, useRef, useImperativeHandle } from 'react';
+import { Text } from 'react-native';
 import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
@@ -15,6 +14,7 @@ import {
   ButtonText,
   InputText,
 } from '../../styles/RegisterStyle';
+import { DropDown } from './Select';
 
 import Background from '../../utils/background.png';
 
@@ -60,36 +60,69 @@ export default function RegisterPage() {
   return (
     <Container>
       <BackgroundImage source={Background}>
-        <ScrollView>
-          <Header>Atendimento</Header>
+        <Header>Atendimemto</Header>
+        <InputText>Motivo do atendimento:</InputText>
 
-          <InputText>Nome:</InputText>
-          <Input onChangeText={onChangePassword} value={password} />
-          <InputText>Sobrenome:</InputText>
-          <Input onChangeText={onChangePassword} value={password} />
-          <InputText>Rua:</InputText>
-          <Input onChangeText={onChangeText} value={text} />
-          <InputText>Bairro:</InputText>
-          <Input onChangeText={onChangePassword} value={password} />
-          <InputText>Número:</InputText>
-          <Input keyboardType="phone-pad" onChangeText={onChangePassword} value={password} />
-          <InputText>Local do atendimento:</InputText>
-          <Input onChangeText={onChangeText} value={text} />
-          <InputText>Motivo do atendimento:</InputText>
-          <Input multiline onChangeText={onChangeText} value={text} />
-          <InputText>Descrição:</InputText>
-          <Input multiline onChangeText={onChangePassword} value={password} />
+        <Input
+          onChangeText={v => handleOnChangeTextInput(v, 'name')}
+          placeholder="Nome:"
+          defaultValue=""
+          placeholderTextColor="rgb(220, 220, 220)"
+        />
+        <InputText>Sobrenome:</InputText>
+        <Input
+          onChangeText={v => handleOnChangeTextInput(v, 'lastname')}
+          placeholder="Sobrenome:"
+          defaultValue=""
+          placeholderTextColor="rgb(220, 220, 220)"
+        />
+        <InputText>Rua:</InputText>
+        <Input
+          onChangeText={v => handleOnChangeTextInput(v, 'Rua')}
+          placeholder="Rua:"
+          defaultValue=""
+          placeholderTextColor="rgb(220, 220, 220)"
+        />
+        <InputText>Bairro:</InputText>
+        <Input
+          onChangeText={v => handleOnChangeTextInput(v, 'Bairro')}
+          placeholder="Bairro:"
+          defaultValue=""
+          placeholderTextColor="rgb(220, 220, 220)"
+        />
+        <InputText>Número:</InputText>
+        <Input
+          onChangeText={v => handleOnChangeTextInput(v, 'Numero')}
+          placeholder="Número:"
+          defaultValue=""
+          placeholderTextColor="rgb(220, 220, 220)"
+        />
+        <InputText>Local do atendimento:</InputText>
+        <Input
+          onChangeText={v => handleOnChangeTextInput(v, 'LocalAtendimento')}
+          placeholder="Local Atendimento:"
+          defaultValue=""
+          placeholderTextColor="rgb(220, 220, 220)"
+        />
+        <InputText>Descrição:</InputText>
+        <Input
+          onChangeText={v => handleOnChangeTextInput(v, 'Descricao')}
+          placeholder="Descrição:"
+          defaultValue=""
+          placeholderTextColor="rgb(220, 220, 220)"
+        />
 
-          <ContainerButton>
-            <TheButton onPress={handleOnPress}>
-              <ButtonText>Enviar atendimento</ButtonText>
-            </TheButton>
+        <ContainerButton>
+          <TheButton onPress={MostraInfo}>
+            <ButtonText>Enviar atendimento</ButtonText>
+          </TheButton>
 
-            <TheButton onPress={() => navigation.navigate('Home')}>
-              <ButtonText>Voltar à página inicial</ButtonText>
-            </TheButton>
-          </ContainerButton>
-        </ScrollView>
+          <TheButton onPress={() => navigation.navigate('Home')}>
+            <ButtonText>Voltar à página inicial</ButtonText>
+          </TheButton>
+        </ContainerButton>
+
+        <StatusBar style="auto" />
       </BackgroundImage>
     </Container>
   );
