@@ -14,7 +14,6 @@ import {
   ButtonText,
   InputText,
 } from '../../styles/RegisterStyle';
-import { DropDown } from './Select';
 
 import Background from '../../utils/background.png';
 
@@ -51,16 +50,12 @@ export default function RegisterPage() {
         `Descrição: ${InputsRef.current.Descricao}\n`,
     );
   }
-
-  // const [text, onChangeText] = React.useState('');
-  // const [password, onChangePassword] = React.useState('');
-
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <Container>
       <BackgroundImage source={Background}>
-        <Header>Atendimemto</Header>
+        <Header>Atendimento</Header>
         <InputText>Motivo do atendimento:</InputText>
 
         <Input
