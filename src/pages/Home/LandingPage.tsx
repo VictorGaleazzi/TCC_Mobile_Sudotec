@@ -2,9 +2,20 @@ import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
 
-import { Container, ContainerButton, TheButton, BackgroundImage, ButtonText } from '../../styles/MainStyle';
+import {
+  Container,
+  ContainerButton,
+  TheButton,
+  BackgroundImage,
+  ButtonText,
+  ImageButton,
+  ButtonSpace,
+} from '../../styles/MainStyle';
 
 import Background from '../../utils/background.png';
+import Imagem1 from '../../utils/atendimento.png';
+import Imagem2 from '../../utils/avaliação.png';
+import Imagem3 from '../../utils/relatório.png';
 
 export default function MainPage() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -13,15 +24,24 @@ export default function MainPage() {
     <Container>
       <BackgroundImage source={Background}>
         <ContainerButton>
-          <TheButton onPress={() => navigation.navigate('Atendimento')}>
+          <ButtonSpace>
+            <TheButton onPress={() => navigation.navigate('Atendimento')}>
+              <ImageButton source={Imagem1} />
+            </TheButton>
             <ButtonText>Gerar Atendimento</ButtonText>
-          </TheButton>
-          <TheButton onPress={() => navigation.navigate('Home')}>
+          </ButtonSpace>
+          <ButtonSpace>
+            <TheButton onPress={() => navigation.navigate('Home')}>
+              <ImageButton source={Imagem2} />
+            </TheButton>
             <ButtonText>Avaliações</ButtonText>
-          </TheButton>
-          <TheButton onPress={() => navigation.navigate('Home')}>
-            <ButtonText>Relatório</ButtonText>
-          </TheButton>
+          </ButtonSpace>
+          <ButtonSpace>
+            <TheButton onPress={() => navigation.navigate('Home')}>
+              <ImageButton source={Imagem3} />
+            </TheButton>
+            <ButtonText>Relatórios</ButtonText>
+          </ButtonSpace>
         </ContainerButton>
       </BackgroundImage>
     </Container>
