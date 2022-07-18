@@ -31,7 +31,7 @@ export default function LoginPage() {
       <Container>
         <Header>Login</Header>
         <InputText> CPF </InputText>
-        <Input onChangeText={onChangeText} value={text} />
+        <Input keyboardType="phone-pad" onChangeText={onChangeText} value={text} />
         <InputText> Senha</InputText>
         <Input onChangeText={onChangePassword} value={password} />
         <ContainerButton>
