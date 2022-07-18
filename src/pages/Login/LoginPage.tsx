@@ -38,7 +38,8 @@ export default function LoginPage() {
           </TheButton>
         </ContainerButton>
         <Text onPress={() => Linking.openURL('#')}>Recupere sua senha</Text>
-        <Text onPress={() => Linking.openURL('#')}>Não possui uma conta? Cadastre-se!</Text>
+
+        <StatusBar />
       </Container>
     </BackgroundImage>
   );

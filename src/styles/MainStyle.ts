@@ -32,20 +32,24 @@ export const ContainerButton = styled.View`
   width: 280px;
 `;
 
-export const Header = styled.Text`
-  font-size: 60px;
+export const ButtonSpace = styled.View`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 160px;
 `;
 
 export const ButtonText = styled.Text`
-  color: #fff9f9;
+  color: #00233a;
 `;
 
 export const TheButton = styled.TouchableOpacity`
-  width: 180px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: #01243c;
+  width: 100px;
+  height: 100px;
+  border-radius: 80px;
+  background-color: #4180ab;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 2px;
@@ -59,4 +63,9 @@ export const Input = styled.TextInput<InputProps>`
   margin: 2px;
   border-radius: 10px;
   background-color: white;
+`;
+
+export const ImageButton = styled.Image`
+  height: 80px;
+  width: 80px;
 `;
