@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
-import Background from '../../utils/background.png';
+import Background from '../../utils/imagem/imagemfundo.png';
 import {
   Container,
   ContainerButton,

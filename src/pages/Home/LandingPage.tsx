@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/core';
 
 import { Container, ContainerButton, TheButton, BackgroundImage, ButtonText } from '../../styles/MainStyle';
 
-import Background from '../../utils/background.png';
+import Background from '../../utils/imagem/imagemfundo.png';
 
 export default function MainPage() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
