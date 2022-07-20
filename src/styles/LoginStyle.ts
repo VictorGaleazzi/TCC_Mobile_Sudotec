@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { useFonts } from 'expo-font';
 
 interface BackgroundProps {
   children: React.ReactNode;
@@ -17,6 +16,7 @@ export const Container = styled.View`
   justify-content: center;
   width: 330px;
   height: 450px;
+  font-family: system-ui;
   border-radius: 50px;
 `;
 
@@ -40,21 +40,18 @@ export const Header = styled.Text`
   font-size: 60px;
   color: white;
   margin-bottom: 20px;
-  font-family: 'Poppins';
   font-weight: 700;
 `;
 
 export const ButtonText = styled.Text`
   color: white;
-  font-family: 'Poppins';
   font-weight: 500;
 `;
 
 export const InputText = styled.Text`
   color: white;
-  margin-top: 10px;
-  font-family: 'Poppins';
-  font-weight: 500;
+  margin: 10px 210px 0 0;
+  font-weight: bold;
 `;
 
 export const TheButton = styled.TouchableOpacity`
@@ -69,11 +66,9 @@ export const TheButton = styled.TouchableOpacity`
 `;
 
 export const Input = styled.TextInput<InputProps>`
-  border-color: black;
-
   width: 250px;
   height: 40px;
-
   border-radius: 10px;
+  padding: 10px;
   background-color: white;
 `;

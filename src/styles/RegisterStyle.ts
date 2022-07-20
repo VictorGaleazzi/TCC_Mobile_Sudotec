@@ -40,15 +40,17 @@ export const AdressContainer = styled.View`
 
 export const ContainerButton = styled.View`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 280px;
 `;
 
 export const Header = styled.Text`
-  font-size: 40px;
+  font-size: 50px;
   color: #01243c;
+  font-family: Arial;
+  font-weight: bold;
 `;
 
 export const ButtonText = styled.Text`
@@ -57,6 +59,9 @@ export const ButtonText = styled.Text`
 
 export const InputText = styled.Text`
   color: #01243c;
+  font-family: Arial;
+  font-weight: bold;
+  
 `;
 
 export const TheButton = styled.TouchableOpacity`
@@ -75,7 +80,7 @@ export const Input = styled.TextInput`
   padding: 10px;
   width: 250px;
   height: 40px;
-  margin: 2px;
+  margin: 6px;
   border-radius: 10px;
   background-color: #e9f4fb;
 `;

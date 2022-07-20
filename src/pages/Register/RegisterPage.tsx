@@ -14,7 +14,7 @@ import {
   InputText,
 } from '../../styles/RegisterStyle';
 
-import Background from '../../utils/background.png';
+import Background from '../../utils/imagem/imagemfundo.png';
 
 export default function RegisterPage() {
   const InputsRef = useRef({
@@ -58,6 +58,7 @@ export default function RegisterPage() {
           <Header>Atendimento</Header>
           <InputText>Motivo do atendimento:</InputText>
 
+          <InputText>Nome:</InputText>
           <Input
             onChangeText={v => handleOnChangeTextInput(v, 'name')}
             placeholder="Nome:"
