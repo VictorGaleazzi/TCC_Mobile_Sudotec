@@ -15,110 +15,106 @@ import {
 } from '../../styles/RegisterStyle';
 
 import Background from '../../utils/imagem/imagemfundo.png';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 export default function RegisterPage() {
-  const InputsRef = useRef({
-    name: '',
-    lastname: '',
-    Rua: '',
-    Bairro: '',
-    Numero: 0,
-    LocalAtendimento: '',
-    Descricao: '',
+  const userSchema = Yup.object().shape({
+    nome: Yup.string().required('Error: O campo nome é obtigatório!'),
+    sobrenome: Yup.string().required('Error: O campo Sobrenome é obtigatório'),
+    rua: Yup.string().required('Error: O campo Rua é obrigatório!'),
+    bairro: Yup.string().required('Error: O campo Bairro é obrigatório!'),
+    numero: Yup.number().max(6, 'Numero muito Longo'),
+    localAtendimento: Yup.string().required('Error: O campo Local de Atendimento é obrigatório!'),
+    descricao: Yup.string(),
   });
 
-  type FieldKeys = keyof typeof InputsRef.current;
-
-  const handleOnChangeTextInput = (v: string, field: FieldKeys) => {
-    InputsRef.current = {
-      ...InputsRef.current,
-      [field]: v,
-    };
-  };
-
-  function MostraInfo() {
-    console.log(
-      `Atendimento Enviado:` +
-        `\n` +
-        `Nome: ${InputsRef.current.name}\n` +
-        `Sobrenome: ${InputsRef.current.lastname}\n` +
-        `Local de Atendimento: ${InputsRef.current.LocalAtendimento}\n` +
-        `Rua: ${InputsRef.current.Rua}\n` +
-        `Bairro: ${InputsRef.current.Bairro}\n` +
-        `Número: ${InputsRef.current.Numero}\n` +
-        `Descrição: ${InputsRef.current.Descricao}\n`,
-    );
-  }
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <Container>
-      <BackgroundImage source={Background}>
-        <ScrollView>
-          <Header>Atendimento</Header>
-          <InputText>Motivo do atendimento:</InputText>
+      <Formik
+        initialValues={{ nome: '', sobrenome: '', rua: '', bairro: '', numero: '', localAtendimento: '', descricao: '' }}
+        onSubmit={values => console.log(values)}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values }) => (
+        <BackgroundImage source={Background}>
+          <ScrollView>
+            <Header>Atendimento</Header>
 
-          <InputText>Nome:</InputText>
-          <Input
-            onChangeText={v => handleOnChangeTextInput(v, 'name')}
-            placeholder="Nome:"
-            defaultValue=""
-            placeholderTextColor="rgb(220, 220, 220)"
-          />
-          <InputText>Sobrenome:</InputText>
-          <Input
-            onChangeText={v => handleOnChangeTextInput(v, 'lastname')}
-            placeholder="Sobrenome:"
-            defaultValue=""
-            placeholderTextColor="rgb(220, 220, 220)"
-          />
-          <InputText>Rua:</InputText>
-          <Input
-            onChangeText={v => handleOnChangeTextInput(v, 'Rua')}
-            placeholder="Rua:"
-            defaultValue=""
-            placeholderTextColor="rgb(220, 220, 220)"
-          />
-          <InputText>Bairro:</InputText>
-          <Input
-            onChangeText={v => handleOnChangeTextInput(v, 'Bairro')}
-            placeholder="Bairro:"
-            defaultValue=""
-            placeholderTextColor="rgb(220, 220, 220)"
-          />
-          <InputText>Número:</InputText>
-          <Input
-            onChangeText={v => handleOnChangeTextInput(v, 'Numero')}
-            placeholder="Número:"
-            defaultValue=""
-            placeholderTextColor="rgb(220, 220, 220)"
-          />
-          <InputText>Local do atendimento:</InputText>
-          <Input
-            onChangeText={v => handleOnChangeTextInput(v, 'LocalAtendimento')}
-            placeholder="Local Atendimento:"
-            defaultValue=""
-            placeholderTextColor="rgb(220, 220, 220)"
-          />
-          <InputText>Descrição:</InputText>
-          <Input
-            onChangeText={v => handleOnChangeTextInput(v, 'Descricao')}
-            placeholder="Descrição:"
-            defaultValue=""
-            placeholderTextColor="rgb(220, 220, 220)"
-          />
+            <InputText>Motivo do atendimento:</InputText>
 
-          <ContainerButton>
-            <TheButton onPress={MostraInfo}>
-              <ButtonText>Enviar atendimento</ButtonText>
-            </TheButton>
+            <InputText>Nome:</InputText>
+            <Input
+              onChangeText={handleChange('nome')}
+                onBlur={handleBlur('nome')}
+                value={values.nome}
+                placeholder="Nome:"
+                placeholderTextColor="rgb(220, 220, 220)"
+            />
+            <InputText>Sobrenome:</InputText>
+            <Input
+                onChangeText={handleChange('sobrenome')}
+                onBlur={handleBlur('sobrenome')}
+                value={values.sobrenome}
+                placeholder="Sobrenome:"
+                placeholderTextColor="rgb(220, 220, 220)"
+            />
+            <InputText>Rua:</InputText>
+            <Input
+                onChangeText={handleChange('rua')}
+                onBlur={handleBlur('rua')}
+                value={values.rua}
+                placeholder="Rua:"
+                placeholderTextColor="rgb(220, 220, 220)"
+            />
+            <InputText>Bairro:</InputText>
+            <Input
+              onChangeText={handleChange('bairro')}
+              onBlur={handleBlur('bairro')}
+              value={values.bairro}
+              placeholder="Bairro:"
+              placeholderTextColor="rgb(220, 220, 220)"
+            />
+            <InputText>Número:</InputText>
+            <Input
+                onChangeText={handleChange('numero')}
+                onBlur={handleBlur('numero')}
+                value={values.numero}
+                placeholder="Número:"
+                placeholderTextColor="rgb(220, 220, 220)"
+            />
+            <InputText>Local do atendimento:</InputText>
+            <Input
+                onChangeText={handleChange('localAtendimento')}
+                onBlur={handleBlur('localAtendimento')}
+                value={values.localAtendimento}
+                placeholder="Local Atendimento:"
+                placeholderTextColor="rgb(220, 220, 220)"
+            />
+            <InputText>Descrição:</InputText>
+            <Input
+                onChangeText={handleChange('descricao')}
+                onBlur={handleBlur('descricao')}
+                value={values.descricao}
+                placeholder="Descrição:"
+                placeholderTextColor="rgb(220, 220, 220)"
+            />
 
-            <TheButton onPress={() => navigation.navigate('Home')}>
-              <ButtonText>Voltar à página inicial</ButtonText>
-            </TheButton>
-          </ContainerButton>
-        </ScrollView>
-      </BackgroundImage>
+            <ContainerButton>
+              <TheButton onPress={handleSubmit} title="Submit">
+                <ButtonText>Enviar atendimento</ButtonText>
+              </TheButton>
+
+              <TheButton onPress={() => navigation.navigate('Home')}>
+                <ButtonText>Voltar à página inicial</ButtonText>
+              </TheButton>
+            </ContainerButton>
+
+          </ScrollView>
+        </BackgroundImage>
+        )}
+      </Formik>
     </Container>
   );
 }
