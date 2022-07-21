@@ -5,11 +5,6 @@ interface BackgroundProps {
   children: React.ReactNode;
 }
 
-// interface InputProps {
-//   onChangeText: React.Dispatch<React.SetStateAction<string>>;
-//   value: string;
-// }
-
 export const BackgroundImage = styled.ImageBackground<BackgroundProps>`
   flex: 1;
   justify-content: center;
@@ -22,20 +17,6 @@ export const Container = styled.View`
   background-color: white;
   align-items: center;
   justify-content: center;
-`;
-
-export const NameContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const AdressContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const ContainerButton = styled.View`
@@ -61,7 +42,6 @@ export const InputText = styled.Text`
   color: #01243c;
   font-family: Arial;
   font-weight: bold;
-  
 `;
 
 export const TheButton = styled.TouchableOpacity`
