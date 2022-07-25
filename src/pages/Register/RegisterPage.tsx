@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
@@ -12,6 +12,13 @@ import {
   Header,
   ButtonText,
   InputText,
+  InputBairro,
+  InputNumero,
+  InputDescricao,
+  ContainerEnderoco,
+  ContainerNomeEnderoco,
+  InputTextEndereco,
+  InputTextEndereco2
 } from '../../styles/RegisterStyle';
 
 import Background from '../../utils/imagem/imagemfundo.png';
@@ -32,6 +39,7 @@ export default function RegisterPage() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
+  <ScrollView>
     <Container>
       <Formik
         initialValues={{ nome: '', sobrenome: '', rua: '', bairro: '', numero: '', localAtendimento: '', descricao: '' }}
@@ -39,10 +47,8 @@ export default function RegisterPage() {
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
         <BackgroundImage source={Background}>
-          <ScrollView>
-            <Header>Atendimento</Header>
 
-            <InputText>Motivo do atendimento:</InputText>
+            <Header>Atendimento</Header>
 
             <InputText>Nome:</InputText>
             <Input
@@ -68,22 +74,27 @@ export default function RegisterPage() {
                 placeholder="Rua:"
                 placeholderTextColor="rgb(220, 220, 220)"
             />
-            <InputText>Bairro:</InputText>
-            <Input
-              onChangeText={handleChange('bairro')}
-              onBlur={handleBlur('bairro')}
-              value={values.bairro}
-              placeholder="Bairro:"
-              placeholderTextColor="rgb(220, 220, 220)"
-            />
-            <InputText>Número:</InputText>
-            <Input
-                onChangeText={handleChange('numero')}
-                onBlur={handleBlur('numero')}
-                value={values.numero}
-                placeholder="Número:"
-                placeholderTextColor="rgb(220, 220, 220)"
-            />
+            <ContainerNomeEnderoco>
+            <InputTextEndereco>Bairro:</InputTextEndereco>
+            <InputTextEndereco2>Número:</InputTextEndereco2>
+            </ContainerNomeEnderoco>
+              <ContainerEnderoco>
+
+                  <InputBairro
+                    onChangeText={handleChange('bairro')}
+                    onBlur={handleBlur('bairro')}
+                    value={values.bairro}
+                    placeholder="Bairro:"
+                    placeholderTextColor="rgb(220, 220, 220)"
+                  />
+                  <InputNumero
+                      onChangeText={handleChange('numero')}
+                      onBlur={handleBlur('numero')}
+                      value={values.numero}
+                      placeholder="Número:"
+                      placeholderTextColor="rgb(220, 220, 220)"
+                  />
+              </ContainerEnderoco>
             <InputText>Local do atendimento:</InputText>
             <Input
                 onChangeText={handleChange('localAtendimento')}
@@ -93,14 +104,11 @@ export default function RegisterPage() {
                 placeholderTextColor="rgb(220, 220, 220)"
             />
             <InputText>Descrição:</InputText>
-            <Input
+            <InputDescricao
                 onChangeText={handleChange('descricao')}
                 onBlur={handleBlur('descricao')}
-                value={values.descricao}
-                placeholder="Descrição:"
-                placeholderTextColor="rgb(220, 220, 220)"
+                value={values.descricao}S
             />
-
             <ContainerButton>
               <TheButton onPress={handleSubmit} title="Submit">
                 <ButtonText>Enviar atendimento</ButtonText>
@@ -111,10 +119,11 @@ export default function RegisterPage() {
               </TheButton>
             </ContainerButton>
 
-          </ScrollView>
+
         </BackgroundImage>
         )}
       </Formik>
     </Container>
+  </ScrollView>
   );
 }

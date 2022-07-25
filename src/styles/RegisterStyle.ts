@@ -23,6 +23,19 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
 `;
+export const ContainerEnderoco = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;
+
+export const ContainerNomeEnderoco = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;
 
 export const NameContainer = styled.View`
   display: flex;
@@ -40,10 +53,11 @@ export const AdressContainer = styled.View`
 
 export const ContainerButton = styled.View`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 280px;
+  margin-bottom: 25px;
 `;
 
 export const Header = styled.Text`
@@ -51,6 +65,8 @@ export const Header = styled.Text`
   color: #01243c;
   font-family: Arial;
   font-weight: bold;
+  margin-bottom: 25px;
+  margin-top: 10px;
 `;
 
 export const ButtonText = styled.Text`
@@ -61,7 +77,19 @@ export const InputText = styled.Text`
   color: #01243c;
   font-family: Arial;
   font-weight: bold;
-  
+`;
+
+export const InputTextEndereco = styled.Text`
+  color: #01243c;
+  font-family: Arial;
+  font-weight: bold;
+  margin-right: 200px;
+`;
+
+export const InputTextEndereco2 = styled.Text`
+  color: #01243c;
+  font-family: Arial;
+  font-weight: bold;
 `;
 
 export const TheButton = styled.TouchableOpacity`
@@ -78,9 +106,49 @@ export const TheButton = styled.TouchableOpacity`
 export const Input = styled.TextInput`
   border-color: black;
   padding: 10px;
-  width: 250px;
+  width: 325px;
   height: 40px;
   margin: 6px;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #e9f4fb;
 `;
+
+export const InputBairro = styled.TextInput`
+  border-color: black;
+  padding: 10px;
+  width: 235px;
+  height: 40px;
+  margin: 6px;
+  border-radius: 20px;
+  background-color: #e9f4fb;
+`;
+
+export const InputNumero = styled.TextInput`
+  border-color: black;
+  padding: 10px;
+  width: 75px;
+  height: 40px;
+  margin: 6px;
+  border-radius: 20px;
+  background-color: #e9f4fb;
+`;
+
+export const InputDescricao = styled.TextInput`
+  border-color: black;
+  padding: 10px;
+  width: 325px;
+  height: 125px;
+  margin: 6px;
+  border-radius: 20px;
+  background-color: #e9f4fb;
+  margin-bottom: 50px;
+`;
+
+export const DivInputs = styled.View `
+  flex: 1;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+`
