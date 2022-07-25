@@ -5,11 +5,6 @@ interface BackgroundProps {
   children: React.ReactNode;
 }
 
-// interface InputProps {
-//   onChangeText: React.Dispatch<React.SetStateAction<string>>;
-//   value: string;
-// }
-
 export const BackgroundImage = styled.ImageBackground<BackgroundProps>`
   flex: 1;
   justify-content: center;
@@ -35,20 +30,6 @@ export const ContainerNomeEnderoco = styled.View`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-`;
-
-export const NameContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const AdressContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const ContainerButton = styled.View`
@@ -77,6 +58,7 @@ export const InputText = styled.Text`
   color: #01243c;
   font-family: Arial;
   font-weight: bold;
+<<<<<<< HEAD
 `;
 
 export const InputTextEndereco = styled.Text`
@@ -90,6 +72,8 @@ export const InputTextEndereco2 = styled.Text`
   color: #01243c;
   font-family: Arial;
   font-weight: bold;
+=======
+>>>>>>> 67a223f0f79db21036e1a93b48d0a2c8283b9e64
 `;
 
 export const TheButton = styled.TouchableOpacity`

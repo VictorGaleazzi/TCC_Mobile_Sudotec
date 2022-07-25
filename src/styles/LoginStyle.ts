@@ -6,8 +6,7 @@ interface BackgroundProps {
 }
 
 interface InputProps {
-  onChangeText: React.Dispatch<React.SetStateAction<string>>;
-  value: string;
+  isValid: boolean;
 }
 
 export const Container = styled.View`
@@ -70,5 +69,10 @@ export const Input = styled.TextInput<InputProps>`
   height: 40px;
   border-radius: 10px;
   padding: 10px;
-  background-color: white;
+  background-color: ${props => (props.isValid ? 'white' : 'red')};
+
+  &:focus,
+  &:focus-visible {
+    outline: none !important;
+  }
 `;

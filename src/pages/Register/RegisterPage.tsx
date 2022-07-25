@@ -3,6 +3,8 @@ import { ScrollView, Text } from 'react-native';
 import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import {
   Container,
   ContainerButton,
@@ -22,8 +24,6 @@ import {
 } from '../../styles/RegisterStyle';
 
 import Background from '../../utils/imagem/imagemfundo.png';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 
 export default function RegisterPage() {
   const userSchema = Yup.object().shape({
@@ -42,7 +42,15 @@ export default function RegisterPage() {
   <ScrollView>
     <Container>
       <Formik
-        initialValues={{ nome: '', sobrenome: '', rua: '', bairro: '', numero: '', localAtendimento: '', descricao: '' }}
+        initialValues={{
+          nome: '',
+          sobrenome: '',
+          rua: '',
+          bairro: '',
+          numero: '',
+          localAtendimento: '',
+          descricao: '',
+        }}
         onSubmit={values => console.log(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -50,24 +58,24 @@ export default function RegisterPage() {
 
             <Header>Atendimento</Header>
 
-            <InputText>Nome:</InputText>
-            <Input
-              onChangeText={handleChange('nome')}
+              <InputText>Nome:</InputText>
+              <Input
+                onChangeText={handleChange('nome')}
                 onBlur={handleBlur('nome')}
                 value={values.nome}
                 placeholder="Nome:"
                 placeholderTextColor="rgb(220, 220, 220)"
-            />
-            <InputText>Sobrenome:</InputText>
-            <Input
+              />
+              <InputText>Sobrenome:</InputText>
+              <Input
                 onChangeText={handleChange('sobrenome')}
                 onBlur={handleBlur('sobrenome')}
                 value={values.sobrenome}
                 placeholder="Sobrenome:"
                 placeholderTextColor="rgb(220, 220, 220)"
-            />
-            <InputText>Rua:</InputText>
-            <Input
+              />
+              <InputText>Rua:</InputText>
+              <Input
                 onChangeText={handleChange('rua')}
                 onBlur={handleBlur('rua')}
                 value={values.rua}

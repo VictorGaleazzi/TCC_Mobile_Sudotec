@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
 import { Linking, Text } from 'react-native';
-import { useFonts } from 'expo-font';
+import { Formik, getIn } from 'formik';
+import * as yup from 'yup';
+import { pt } from 'yup-locale-pt';
 
-import { RootStackParamList } from 'routes/types';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/core';
 import Background from '../../utils/imagem/imagemfundo.png';
+
 import {
   Container,
   ContainerButton,
@@ -18,29 +17,63 @@ import {
   InputText,
 } from '../../styles/LoginStyle';
 
-export default function LoginPage() {
-  const [text, onChangeText] = React.useState('');
-  const [password, onChangePassword] = React.useState('');
+yup.setLocale(pt);
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+export default function LoginPage() {
+  const loginValidationSchema = yup.object().shape({
+    cpf: yup.string().required().length(14),
+    password: yup.string().required().min(8).matches('8 caracteres, uma maiúscula, um número e um caracter especial'),
+  });
+
+  function getStyles(errors, fieldName) {
+    if (getIn(errors, fieldName)) {
+      return {
+        // outline: 'none',
+      };
+    }
+  }
 
   return (
-    <BackgroundImage source={Background}>
-      <Container>
-        <Header>Login</Header>
-        <InputText> CPF </InputText>
-        <Input keyboardType="phone-pad" onChangeText={onChangeText} value={text} />
-        <InputText> Senha</InputText>
-        <Input onChangeText={onChangePassword} value={password} />
-        <ContainerButton>
-          <TheButton onPress={() => navigation.navigate('Home')}>
-            <ButtonText>Entrar</ButtonText>
-          </TheButton>
-        </ContainerButton>
-        <Text onPress={() => Linking.openURL('#')}>Recupere sua senha</Text>
+    <Formik
+      initialValues={{ cpf: '', password: '' }}
+      validateOnMount
+      onSubmit={values => console.log(values)}
+      validationSchema={loginValidationSchema}
+    >
+      {({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
+        <BackgroundImage source={Background}>
+          <Container>
+            <Header>Login</Header>
+            <InputText> CPF </InputText>
+            <Input
+              style={getStyles(errors, 'cpf')}
+              onChangeText={handleChange('cpf')}
+              onBlur={handleBlur('cpf')}
+              value={values.cpf}
+              isValid={!(errors.cpf && touched.cpf)}
+            />
+            {errors.cpf && touched.cpf && <Text> {errors.cpf} </Text>}
+            <InputText> Senha</InputText>
+            <Input
+              style={getStyles(errors, 'password')}
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              secureTextEntry
+              isValid={!(errors.password && touched.password)}
+            />
+            {errors.password && touched.password && <Text> {errors.password} </Text>}
+            <ContainerButton>
+              <TheButton onPress={() => handleSubmit()}>
+                <ButtonText>Entrar</ButtonText>
+              </TheButton>
+            </ContainerButton>
+            <Text onPress={() => Linking.openURL('#')}>Recupere sua senha</Text>
 
-        <StatusBar />
-      </Container>
-    </BackgroundImage>
+            <StatusBar />
+          </Container>
+        </BackgroundImage>
+      )}
+    </Formik>
   );
 }
