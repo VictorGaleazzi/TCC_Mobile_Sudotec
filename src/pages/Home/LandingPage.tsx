@@ -2,20 +2,13 @@ import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
 
-import {
-  Container,
-  ContainerButton,
-  TheButton,
-  BackgroundImage,
-  ButtonText,
-  ImageButton,
-  ButtonSpace,
-} from '../../styles/MainStyle';
+import { BackgroundImage } from '../../styles/GeneralStyle';
+import { Container, ContainerButton, TheButton, ButtonText, ImageButton, ButtonSpace } from '../../styles/MainStyle';
 
-import Background from '../../utils/background.png';
-import Imagem1 from '../../utils/atendimento.png';
-import Imagem2 from '../../utils/avaliação.png';
-import Imagem3 from '../../utils/relatório.png';
+import Background from '../../assets/background.png';
+import Imagem1 from '../../assets/atendimento.png';
+import Imagem2 from '../../assets/avaliação.png';
+import Imagem3 from '../../assets/relatório.png';
 
 export default function MainPage() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();

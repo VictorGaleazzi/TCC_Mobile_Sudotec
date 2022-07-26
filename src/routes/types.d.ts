@@ -26,6 +26,7 @@ export type AppStackParamList = {
   Home: undefined;
   Login: undefined;
   Atendimento: undefined;
+  Language: undefined;
 };
 
 export type RootStackParamList = AppStackParamList;
