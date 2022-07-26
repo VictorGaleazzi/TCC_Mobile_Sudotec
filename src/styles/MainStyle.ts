@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-interface BackgroundProps {
-  children: React.ReactNode;
-}
-
 interface InputProps {
   onChangeText: React.Dispatch<React.SetStateAction<string>>;
   value: string;
@@ -15,13 +11,6 @@ export const Container = styled.View`
   background-color: white;
   align-items: center;
   justify-content: center;
-`;
-
-export const BackgroundImage = styled.ImageBackground<BackgroundProps>`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 `;
 
 export const ContainerButton = styled.View`

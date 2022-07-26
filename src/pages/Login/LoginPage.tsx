@@ -2,40 +2,39 @@ import { StatusBar } from 'expo-status-bar';
 import { Linking, Text } from 'react-native';
 import { Formik, getIn } from 'formik';
 import * as yup from 'yup';
-import { pt } from 'yup-locale-pt';
+import i18n from 'i18n-js';
 
-import Background from '../../utils/imagem/imagemfundo.png';
+import { BackgroundImage } from '../../styles/GeneralStyle';
+import { selectLocale } from '../../translation/translation';
+import Background from '../../assets/imagem/imagemfundo.png';
 
-import {
-  Container,
-  ContainerButton,
-  TheButton,
-  Input,
-  BackgroundImage,
-  Header,
-  ButtonText,
-  InputText,
-} from '../../styles/LoginStyle';
+import { Container, ContainerButton, TheButton, Input, Header, ButtonText, InputText } from '../../styles/LoginStyle';
 
-yup.setLocale(pt);
+selectLocale();
 
 export default function LoginPage() {
   const loginValidationSchema = yup.object().shape({
-    cpf: yup.string().required().length(14),
-    password: yup.string().required().min(8).matches('8 caracteres, uma maiúscula, um número e um caracter especial'),
+    user: yup.string().required().max(20),
+    password: yup
+      .string()
+      .required()
+      .matches(
+        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+        '8 caracteres, uma maiúscula, um número e um caracter especial',
+      ),
   });
 
   function getStyles(errors, fieldName) {
     if (getIn(errors, fieldName)) {
       return {
-        // outline: 'none',
+        outline: 'none',
       };
     }
   }
 
   return (
     <Formik
-      initialValues={{ cpf: '', password: '' }}
+      initialValues={{ user: '', password: '' }}
       validateOnMount
       onSubmit={values => console.log(values)}
       validationSchema={loginValidationSchema}
@@ -43,17 +42,17 @@ export default function LoginPage() {
       {({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
         <BackgroundImage source={Background}>
           <Container>
-            <Header>Login</Header>
-            <InputText> CPF </InputText>
+            <Header>{i18n.t('Login')}</Header>
+            <InputText>{i18n.t('Usuário')}</InputText>
             <Input
-              style={getStyles(errors, 'cpf')}
-              onChangeText={handleChange('cpf')}
-              onBlur={handleBlur('cpf')}
-              value={values.cpf}
-              isValid={!(errors.cpf && touched.cpf)}
+              style={getStyles(errors, 'user')}
+              onChangeText={handleChange('user')}
+              onBlur={handleBlur('user')}
+              value={values.user}
+              isValid={!(errors.user && touched.user)}
             />
-            {errors.cpf && touched.cpf && <Text> {errors.cpf} </Text>}
-            <InputText> Senha</InputText>
+            {errors.user && touched.user && <Text> {errors.user} </Text>}
+            <InputText>{i18n.t('Senha')}</InputText>
             <Input
               style={getStyles(errors, 'password')}
               onChangeText={handleChange('password')}
@@ -65,10 +64,10 @@ export default function LoginPage() {
             {errors.password && touched.password && <Text> {errors.password} </Text>}
             <ContainerButton>
               <TheButton onPress={() => handleSubmit()}>
-                <ButtonText>Entrar</ButtonText>
+                <ButtonText>{i18n.t('Entrar')}</ButtonText>
               </TheButton>
             </ContainerButton>
-            <Text onPress={() => Linking.openURL('#')}>Recupere sua senha</Text>
+            <Text onPress={() => Linking.openURL('#')}>{i18n.t('RecuperarSenha')}</Text>
 
             <StatusBar />
           </Container>

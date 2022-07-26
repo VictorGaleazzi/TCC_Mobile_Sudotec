@@ -3,18 +3,18 @@ import { ScrollView } from 'react-native';
 import { RootStackParamList } from 'routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
+import { BackgroundImage } from '../../styles/GeneralStyle';
 import {
   Container,
   ContainerButton,
   TheButton,
   Input,
-  BackgroundImage,
   Header,
   ButtonText,
   InputText,
 } from '../../styles/RegisterStyle';
 
-import Background from '../../utils/imagem/imagemfundo.png';
+import Background from '../../assets/imagem/imagemfundo.png';
 
 export default function RegisterPage() {
   const InputsRef = useRef({
