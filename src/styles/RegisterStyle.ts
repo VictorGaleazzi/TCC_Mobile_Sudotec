@@ -58,7 +58,6 @@ export const InputText = styled.Text`
   color: #01243c;
   font-family: Arial;
   font-weight: bold;
-<<<<<<< HEAD
 `;
 
 export const InputTextEndereco = styled.Text`
@@ -72,8 +71,6 @@ export const InputTextEndereco2 = styled.Text`
   color: #01243c;
   font-family: Arial;
   font-weight: bold;
-=======
->>>>>>> 67a223f0f79db21036e1a93b48d0a2c8283b9e64
 `;
 
 export const TheButton = styled.TouchableOpacity`
