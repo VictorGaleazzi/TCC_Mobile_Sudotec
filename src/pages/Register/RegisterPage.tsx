@@ -5,12 +5,12 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/core';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { BackgroundImage } from '../../styles/GeneralStyle';
 import {
   Container,
   ContainerButton,
   TheButton,
   Input,
-  BackgroundImage,
   Header,
   ButtonText,
   InputText,
@@ -20,10 +20,10 @@ import {
   ContainerEnderoco,
   ContainerNomeEnderoco,
   InputTextEndereco,
-  InputTextEndereco2
+  InputTextEndereco2,
 } from '../../styles/RegisterStyle';
 
-import Background from '../../utils/imagem/imagemfundo.png';
+import Background from '../../assets/imagem/imagemfundo.png';
 
 export default function RegisterPage() {
   const userSchema = Yup.object().shape({
@@ -39,24 +39,23 @@ export default function RegisterPage() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-  <ScrollView>
-    <Container>
-      <Formik
-        initialValues={{
-          nome: '',
-          sobrenome: '',
-          rua: '',
-          bairro: '',
-          numero: '',
-          localAtendimento: '',
-          descricao: '',
-        }}
-        onSubmit={values => console.log(values)}
-      >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
-        <BackgroundImage source={Background}>
-
-            <Header>Atendimento</Header>
+    <ScrollView>
+      <Container>
+        <Formik
+          initialValues={{
+            nome: '',
+            sobrenome: '',
+            rua: '',
+            bairro: '',
+            numero: '',
+            localAtendimento: '',
+            descricao: '',
+          }}
+          onSubmit={values => console.log(values)}
+        >
+          {({ handleChange, handleBlur, handleSubmit, values }) => (
+            <BackgroundImage source={Background}>
+              <Header>Atendimento</Header>
 
               <InputText>Nome:</InputText>
               <Input
@@ -81,57 +80,55 @@ export default function RegisterPage() {
                 value={values.rua}
                 placeholder="Rua:"
                 placeholderTextColor="rgb(220, 220, 220)"
-            />
-            <ContainerNomeEnderoco>
-            <InputTextEndereco>Bairro:</InputTextEndereco>
-            <InputTextEndereco2>Número:</InputTextEndereco2>
-            </ContainerNomeEnderoco>
+              />
+              <ContainerNomeEnderoco>
+                <InputTextEndereco>Bairro:</InputTextEndereco>
+                <InputTextEndereco2>Número:</InputTextEndereco2>
+              </ContainerNomeEnderoco>
               <ContainerEnderoco>
-
-                  <InputBairro
-                    onChangeText={handleChange('bairro')}
-                    onBlur={handleBlur('bairro')}
-                    value={values.bairro}
-                    placeholder="Bairro:"
-                    placeholderTextColor="rgb(220, 220, 220)"
-                  />
-                  <InputNumero
-                      onChangeText={handleChange('numero')}
-                      onBlur={handleBlur('numero')}
-                      value={values.numero}
-                      placeholder="Número:"
-                      placeholderTextColor="rgb(220, 220, 220)"
-                  />
+                <InputBairro
+                  onChangeText={handleChange('bairro')}
+                  onBlur={handleBlur('bairro')}
+                  value={values.bairro}
+                  placeholder="Bairro:"
+                  placeholderTextColor="rgb(220, 220, 220)"
+                />
+                <InputNumero
+                  onChangeText={handleChange('numero')}
+                  onBlur={handleBlur('numero')}
+                  value={values.numero}
+                  placeholder="Número:"
+                  placeholderTextColor="rgb(220, 220, 220)"
+                />
               </ContainerEnderoco>
-            <InputText>Local do atendimento:</InputText>
-            <Input
+              <InputText>Local do atendimento:</InputText>
+              <Input
                 onChangeText={handleChange('localAtendimento')}
                 onBlur={handleBlur('localAtendimento')}
                 value={values.localAtendimento}
                 placeholder="Local Atendimento:"
                 placeholderTextColor="rgb(220, 220, 220)"
-            />
-            <InputText>Descrição:</InputText>
-            <InputDescricao
+              />
+              <InputText>Descrição:</InputText>
+              <InputDescricao
                 onChangeText={handleChange('descricao')}
                 onBlur={handleBlur('descricao')}
-                value={values.descricao}S
-            />
-            <ContainerButton>
-              <TheButton onPress={handleSubmit} title="Submit">
-                <ButtonText>Enviar atendimento</ButtonText>
-              </TheButton>
+                value={values.descricao}
+                S
+              />
+              <ContainerButton>
+                <TheButton onPress={handleSubmit} title="Submit">
+                  <ButtonText>Enviar atendimento</ButtonText>
+                </TheButton>
 
-              <TheButton onPress={() => navigation.navigate('Home')}>
-                <ButtonText>Voltar à página inicial</ButtonText>
-              </TheButton>
-            </ContainerButton>
-
-
-        </BackgroundImage>
-        )}
-      </Formik>
-    </Container>
-  </ScrollView>
+                <TheButton onPress={() => navigation.navigate('Home')}>
+                  <ButtonText>Voltar à página inicial</ButtonText>
+                </TheButton>
+              </ContainerButton>
+            </BackgroundImage>
+          )}
+        </Formik>
+      </Container>
+    </ScrollView>
   );
 }

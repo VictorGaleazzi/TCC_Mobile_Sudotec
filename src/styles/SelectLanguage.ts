@@ -1,17 +1,16 @@
+import React from 'react';
 import styled from 'styled-components/native';
 
 interface InputProps {
-  isValid: boolean;
+  onChangeText: React.Dispatch<React.SetStateAction<string>>;
+  value: string;
 }
 
 export const Container = styled.View`
-  background-color: #4180ab;
+  flex: 1;
+  background-color: white;
   align-items: center;
   justify-content: center;
-  width: 330px;
-  height: 450px;
-  font-family: system-ui;
-  border-radius: 50px;
 `;
 
 export const ContainerButton = styled.View`
@@ -20,24 +19,12 @@ export const ContainerButton = styled.View`
   justify-content: center;
   align-items: center;
   width: 280px;
-  margin: 10px;
 `;
 
 export const Header = styled.Text`
-  font-size: 60px;
-  color: white;
-  margin-bottom: 20px;
-  font-weight: 700;
-`;
-
-export const ButtonText = styled.Text`
-  color: white;
-  font-weight: 500;
-`;
-
-export const InputText = styled.Text`
-  color: white;
-  margin: 10px 210px 0 0;
+  font-size: 50px;
+  color: #01243c;
+  font-family: Arial;
   font-weight: bold;
 `;
 
@@ -45,7 +32,7 @@ export const TheButton = styled.TouchableOpacity`
   width: 180px;
   height: 40px;
   border-radius: 10px;
-  background-color: #00233a;
+  background-color: #1ea5fc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,14 +40,11 @@ export const TheButton = styled.TouchableOpacity`
 `;
 
 export const Input = styled.TextInput<InputProps>`
+  border-color: black;
+  border-width: 2px;
   width: 250px;
   height: 40px;
+  margin: 2px;
   border-radius: 10px;
-  padding: 10px;
-  background-color: ${props => (props.isValid ? 'white' : 'red')};
-
-  &:focus,
-  &:focus-visible {
-    outline: none !important;
-  }
+  background-color: white;
 `;
